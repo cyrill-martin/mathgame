@@ -99,6 +99,7 @@ menu {
   float: right;
   margin: 0;
   font-size: 1rem;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 560px) {

@@ -12,6 +12,7 @@
         type="text"
         v-model="input"
         @keyup.enter="validateInput"
+        autoComplete="off"
         autofocus
       />
     </div>

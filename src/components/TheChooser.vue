@@ -26,7 +26,7 @@ export default {
     return {
       showSettings: false,
       currentMultipliers: null,
-      currentRows: null
+      currentRows: null,
     };
   },
   methods: {
@@ -34,9 +34,8 @@ export default {
       this.$emit("set-mode", mode);
     },
     setSettings(multipliers, rows, rowPicks) {
-      console.log(multipliers)
-      this.$emit("set-settings", multipliers, rows, rowPicks)
-    }
+      this.$emit("set-settings", multipliers, rows, rowPicks);
+    },
   },
 };
 </script>
@@ -49,16 +48,18 @@ div {
 
 button {
   border: solid 1px lightgrey;
-  background-color: white;
   margin: 0.5rem;
   padding: 0.5rem;
   width: 4rem;
   font-size: 2rem;
   border-radius: 20px;
   cursor: pointer;
+  background-color: white;
+  transition: 0.5s;
 }
 
 button:hover {
   background-color: lightgrey;
+  transition: 0.5s;
 }
 </style>

@@ -47,6 +47,7 @@ export default {
         n2: { nr: 2, checked: true },
         n1: { nr: 1, checked: true },
       },
+      timeLimit: 10
     };
   },
   provide() {
@@ -55,7 +56,7 @@ export default {
       rows: computed(() => this.rows),
       rowPicks: this.rowPicks,
       toSolve: 10,
-      timeLimit: 5,
+      timeLimit: computed(() => this.timeLimit),
     };
   },
   methods: {
@@ -66,7 +67,6 @@ export default {
       this.multipliers = multipliers;
       this.rows = rows;
       this.rowPicks = rowPicks;
-      console.log(this.multipliers);
     },
   },
 };

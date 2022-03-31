@@ -1,6 +1,6 @@
 <template>
   <teleport to="body">
-    <div @click="closeSettings" class="backdrop"></div>
+    <div class="backdrop"></div>
     <div class="popUp">
       <div class="multipliers">
         <input
@@ -8,18 +8,16 @@
           id="all12"
           :value="all12"
           v-model="currMultipliers"
-          :checked="checked12"
         />
-        <label for="one">1-12</label>
+        <label for="all12">1-12</label>
         <br />
         <input
           type="radio"
           id="all10"
           :value="all10"
           v-model="currMultipliers"
-          :checked="checked10"
         />
-        <label for="two">1-10</label>
+        <label for="all10">1-10</label>
       </div>
       <div>
         <input
@@ -120,6 +118,7 @@
         <br />
       </div>
       <div>
+        <Transition><span v-if="hint">🚫</span></Transition>
         <button @click.prevent="saveSettings">👍</button>
       </div>
     </div>
@@ -129,7 +128,6 @@
 <script>
 export default {
   beforeMount() {
-    console.log("hello settings");
     this.currMultipliers = this.multipliers;
     this.currRows = this.rows;
     this.currRowPicks = this.rowPicks;
@@ -143,17 +141,8 @@ export default {
       currMultipliers: null,
       currRows: null,
       currRowPicks: null,
+      hint: false,
     };
-  },
-  computed: {
-    checked12() {
-      console.log(this.currMultipliers.length);
-      return this.currMultipliers.length === 12;
-    },
-    checked10() {
-      console.log(this.currMultipliers.length);
-      return this.currMultipliers.length === 10;
-    }
   },
   methods: {
     closeSettings() {
@@ -166,20 +155,20 @@ export default {
           this.currRows.push(value.nr);
         }
       }
-      if (this.currMultipliers.length > 10) {
-        this.currMultipliers = this.all12;
-      } else {
-        this.currMultipliers = this.all10;
-      }
       this.$emit(
         "set-settings",
         this.currMultipliers,
         this.currRows,
         this.currRowPicks
       );
-      this.closeSettings();
+      if (this.currRows.length >= 1) {
+        this.hint = false;
+        this.closeSettings();
+      } else {
+        this.hint = true;
+      }
     },
-  }
+  },
 };
 </script>
 
@@ -197,8 +186,8 @@ export default {
   border-radius: 4px;
   position: fixed;
   top: 5vh;
-  left: 25%;
-  width: 50%;
+  left: 40%;
+  width: 20%;
   z-index: 100;
   border: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
@@ -207,9 +196,9 @@ export default {
   overflow: hidden;
   background-color: white;
   max-height: 800px;
-  min-width: 300px;
   overflow: auto;
   font-size: 1.5rem;
+  line-height: 1.5;
 }
 menu {
   float: right;
@@ -219,22 +208,41 @@ menu {
 
 button {
   border: solid 1px lightgrey;
-  background-color: white;
   margin: 0.5rem;
   padding: 0.5rem;
   width: 4rem;
   font-size: 2rem;
   border-radius: 20px;
   cursor: pointer;
-  float: right; 
+  float: right;
+  background-color: white;
+  transition: 0.5s;
 }
 
 button:hover {
   background-color: lightgrey;
+  transition: 0.5s;
 }
 
 .multipliers {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+input {
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: -0.3rem;
+  margin-right: 0.5rem;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 
 @media only screen and (max-width: 560px) {
