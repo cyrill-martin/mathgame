@@ -7,11 +7,13 @@
         <div style="text-align: center">
           <iframe
             id="ytplayer"
-            type="text/html"
             :width="ytSize.w"
             :height="ytSize.h"
             :src="videoUrl"
+            title="YouTube video player"
             frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
           ></iframe>
         </div>
       </div>
@@ -91,7 +93,6 @@ export default {
         "5-HNUfP71_s",
         "oZevMjlG24A",
         "3YpFSOB8zX4",
-
       ],
     };
   },
