@@ -1,6 +1,6 @@
 <template>
   <header>
-    <a href="/">🐱</a>
+    <a href="/">🐱🐶</a>
   </header>
 </template>
 
