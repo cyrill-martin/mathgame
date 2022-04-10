@@ -9,8 +9,7 @@
     <div v-if="!hint" class="input">
       <input
         id="catput"
-        inputmode="numeric"
-        type="text"
+        type="number"
         pattern="[0-9]*"
         v-model="input"
         @keyup.enter="validateInput"
