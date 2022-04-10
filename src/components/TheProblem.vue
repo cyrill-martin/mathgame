@@ -9,7 +9,8 @@
     <div v-if="!hint" class="input">
       <input
         id="catput"
-        type="text"
+        type="number"
+        pattern="[0-9]*"
         v-model="input"
         @keyup.enter="validateInput"
         autoComplete="off"
@@ -171,6 +172,18 @@ export default {
   text-align: center;
   font-size: 2rem;
   border-radius: 20px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .hint {
