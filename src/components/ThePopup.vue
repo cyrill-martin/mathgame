@@ -1,19 +1,21 @@
 <template>
   <teleport to="body">
     <div @click="closePopup" class="backdrop"></div>
-    <div class="popUp">
+    <transition name="video">
+      <div class="popUp">
         <menu><span @click="closePopup">&#10006;</span></menu>
-      <div style="text-align: center">
-        <iframe
-          id="ytplayer"
-          type="text/html"
-          :width="ytSize.w"
-          :height="ytSize.h"
-          :src="videoUrl"
-          frameborder="0"
-        ></iframe>
+        <div style="text-align: center">
+          <iframe
+            id="ytplayer"
+            type="text/html"
+            :width="ytSize.w"
+            :height="ytSize.h"
+            :src="videoUrl"
+            frameborder="0"
+          ></iframe>
+        </div>
       </div>
-    </div>
+    </transition>
   </teleport>
 </template>
 
@@ -24,7 +26,7 @@ export default {
     videoUrl() {
       const videoId =
         this.videoIds[Math.floor(Math.random() * this.videoIds.length)];
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&info=0&controls=0&playlist=${videoId}&loop=1&origin=http:localhost:8080`;
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&info=0&controls=0&playlist=${videoId}&loop=1&origin=${process.env.VUE_APP_URL}`;
     },
     screenWidth() {
       return screen.width;
@@ -33,13 +35,13 @@ export default {
       if (this.screenWidth < 560) {
         return {
           w: 250,
-          h: 500
-        }
-      } 
+          h: 500,
+        };
+      }
       return {
         w: 300,
-        h: 600
-      }
+        h: 600,
+      };
     },
   },
   methods: {
@@ -50,7 +52,7 @@ export default {
   data() {
     return {
       videoIds: [
-        "DltefmkC62I",
+        "B7G6n87SRh8",
         "ZLknpTK4jHI",
         "Wm3F8kF9WAE",
         "9Ql4H0ko5-w",
@@ -100,6 +102,16 @@ menu {
   margin: 0;
   font-size: 1rem;
   cursor: pointer;
+}
+
+.video-enter-active,
+.video-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.video-enter-from,
+.video-leave-to {
+  opacity: 0;
 }
 
 @media only screen and (max-width: 560px) {

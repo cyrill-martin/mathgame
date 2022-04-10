@@ -4,6 +4,7 @@
     @close-settings="showSettings = false"
     @set-settings="setSettings"
   ></the-settings>
+
   <div>
     <button @click.prevent="setMode(1)">·</button>
     <button @click.prevent="setMode(2)">:</button>
@@ -62,4 +63,5 @@ button:hover {
   background-color: lightgrey;
   transition: 0.5s;
 }
+
 </style>
