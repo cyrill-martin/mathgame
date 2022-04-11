@@ -28,7 +28,8 @@ export default {
     videoUrl() {
       const videoId =
         this.videoIds[Math.floor(Math.random() * this.videoIds.length)];
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&info=0&controls=0&playlist=${videoId}&loop=1&origin=${process.env.VUE_APP_URL}`;
+      // return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&info=0&controls=0&playlist=${videoId}&loop=1&origin=${process.env.VUE_APP_URL}`;
+      return `https://www.youtube.com/embed/${videoId}?&controls=0&origin=${process.env.VUE_APP_URL}`;
     },
     screenWidth() {
       return screen.width;
@@ -91,6 +92,17 @@ export default {
         "5-HNUfP71_s",
         "oZevMjlG24A",
         "3YpFSOB8zX4",
+        "g9qjqPDPQNc",
+        "tVNXEJvkdX8",
+        "NytW6fJ3_GE",
+        "aNFFHKGiALo",
+        "9YVsuOVkJfU",
+        "qP4qb2Tc3Bg",
+        "QQmA-_SWSjA",
+        "isRPMUy00sI",
+        "LrLPDXG7t80",
+        "h8H7fkvrPpw",
+        "n46lK0tqrIc"
       ],
     };
   },
@@ -125,7 +137,7 @@ export default {
   overflow: auto;
 }
 menu {
-  float: right;
+  text-align: right;
   margin: 0;
   font-size: 1rem;
   cursor: pointer;

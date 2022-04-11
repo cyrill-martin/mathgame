@@ -55,7 +55,7 @@ export default {
       multipliers: computed(() => this.multipliers),
       rows: computed(() => this.rows),
       rowPicks: this.rowPicks,
-      toSolve: 10,
+      toSolve: 2,
       timeLimit: computed(() => this.timeLimit),
     };
   },
