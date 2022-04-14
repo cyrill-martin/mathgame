@@ -55,7 +55,7 @@ export default {
       multipliers: computed(() => this.multipliers),
       rows: computed(() => this.rows),
       rowPicks: this.rowPicks,
-      toSolve: 2,
+      toSolve: parseInt(process.env.VUE_APP_TOSOLVE),
       timeLimit: computed(() => this.timeLimit),
     };
   },

@@ -29,7 +29,8 @@ export default {
       const videoId =
         this.videoIds[Math.floor(Math.random() * this.videoIds.length)];
       // return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&info=0&controls=0&playlist=${videoId}&loop=1&origin=${process.env.VUE_APP_URL}`;
-      return `https://www.youtube.com/embed/${videoId}?&controls=0&origin=${process.env.VUE_APP_URL}`;
+      // return `https://www.youtube.com/embed/${videoId}?&controls=0&origin=${process.env.VUE_APP_URL}`;
+      return `https://www.youtube.com/embed/${videoId}?&origin=${process.env.VUE_APP_URL}`;
     },
     screenWidth() {
       return screen.width;
