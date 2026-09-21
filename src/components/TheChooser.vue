@@ -6,9 +6,9 @@
   ></the-settings>
 
   <div>
-    <button @click.prevent="setMode(1)">·</button>
-    <button @click.prevent="setMode(2)">:</button>
-    <button @click.prevent="setMode(3)">· & :</button>
+    <button @click.prevent="setMode(1)">Multiplikation</button><br />
+    <button @click.prevent="setMode(2)">Division</button><br />
+    <button @click.prevent="setMode(3)">beides</button>
   </div>
   <div>
     <button @click.prevent="showSettings = true">⚙️</button>
@@ -51,7 +51,7 @@ button {
   border: solid 1px lightgrey;
   margin: 0.5rem;
   padding: 0.5rem;
-  width: 4rem;
+
   font-size: 2rem;
   border-radius: 20px;
   cursor: pointer;

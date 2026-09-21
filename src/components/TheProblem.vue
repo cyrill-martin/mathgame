@@ -7,12 +7,13 @@
       ><span class="second">{{ second }}</span>
     </div>
     <div v-if="!hint" class="input">
+      <!-- @keyup.enter="validateInput" -->
       <input
         id="catput"
         type="number"
         pattern="[0-9]*"
         v-model="input"
-        @keyup.enter="validateInput"
+        
         autoComplete="off"
         autofocus
       />
@@ -110,10 +111,6 @@ export default {
       if (this.input == this.result) {
         this.solved += 1;
         this.setProblem();
-      } else {
-        this.setHint(true);
-        this.solved = 0;
-        this.stopTimer();
       }
     },
     addTime(increase) {
@@ -138,6 +135,9 @@ export default {
     }
   },
   watch: {
+    input() {
+      this.validateInput(); 
+    },
     solved(newValue) {
       if (newValue === this.toSolve) {
         this.problemSet = false;
